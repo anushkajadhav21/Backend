@@ -10,13 +10,12 @@ exports.createUser = async (req, res, next) => {
   const encryptedPassword = await bcrypt.hash(req.body.password,10)
   
   const newUser = new customerModel({
-    userName: req.body.userName,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
+    phoneNo: req.body.phoneNo,
     password: encryptedPassword,
-    contactNo:req.body.contactNo,
-    gender:req.body.gender
+    gender: req.body.gender
   });
   
   await newUser
