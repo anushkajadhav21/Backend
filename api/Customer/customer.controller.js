@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
 exports.createUser = async (req, res, next) => {
+
+  console.log("V");
   
   const encryptedPassword = await bcrypt.hash(req.body.password,10)
   
@@ -13,7 +15,10 @@ exports.createUser = async (req, res, next) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: encryptedPassword,
+    contactNo:req.body.contactNo,
+    gender:req.body.gender
   });
+  
   await newUser
     .save()
     .then((result) => {
