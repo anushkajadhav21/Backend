@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect(process.env.mongodb).then(() => {
+mongoose.connect("mongodb+srv://shoppingApp:kjypNZ36PQ0qfDmg@mongodb.ofjottv.mongodb.net/?retryWrites=true&w=majority").then(() => {
   console.log('Database connection established');
 }).catch((error) => {
   console.log(error);
@@ -13,9 +13,8 @@ mongoose.connect(process.env.mongodb).then(() => {
 
 var customerroute = require('./api/Customer/customerroute');
 var productroute = require('./api/Product/productRoutes');
-var app1 = express();
 
-app1.use((req, res, next) => {
+app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', '*');
