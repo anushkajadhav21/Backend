@@ -12,6 +12,7 @@ exports.createUser = async (req, res, next) => {
   const newUser = new customerModel({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    userName:req.body.userName,
     email: req.body.email,
     phoneNo: req.body.phoneNo,
     password: encryptedPassword,
